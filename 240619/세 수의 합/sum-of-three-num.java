@@ -26,10 +26,10 @@ public class Main {
             count = new HashMap<>();
             for (int j = i + 1; j < n; j++) {
                 long target = k - arr[i] - arr[j];
-                if (map.containsKey(target)) {
-                    result += map.get(target);
+                if (count.containsKey(target)) {
+                    result += count.get(target);
                 }
-                map.put(arr[j], map.getOrDefault(arr[j], 0) + 1);
+                count.put(arr[j], count.getOrDefault(arr[j], 0) + 1);
             }
         }
         
