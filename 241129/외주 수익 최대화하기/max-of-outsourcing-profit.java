@@ -23,12 +23,11 @@ public class Main {
         for(int i = 0; i<n; i++){
             if (i + times[i] > n) continue;
             int d = dp[i+times[i]];
-            int new_d;
-            if(i > 0 && dp[i] == 0){
-                new_d = dp[i-1] + pays[i];
-            }else{
-                new_d = dp[i] + pays[i];
+            int temp_max = 0;
+            for(int j = 0; j<=i; j++){
+                if(temp_max < dp[j]) temp_max = dp[j];
             }
+            int new_d = temp_max + pays[i];
             if (d < new_d){
                 dp[i+times[i]] = new_d;
             }
@@ -36,6 +35,7 @@ public class Main {
         int max_answer = -1;
         for(int i = 0; i<=n; i++){
             if(max_answer < dp[i]) max_answer = dp[i];
+            // System.out.print(dp[i]+" ");
         }
         System.out.print(max_answer);
         
