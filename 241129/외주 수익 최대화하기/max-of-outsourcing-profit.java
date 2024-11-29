@@ -13,6 +13,7 @@ public class Main {
         times = new int[n];
         pays = new int[n];
         dp = new int[n+1];
+        
         for(int i=0; i<n; i++){
             st = new StringTokenizer(in.readLine());
             times[i] = Integer.parseInt(st.nextToken());
@@ -20,12 +21,12 @@ public class Main {
         }
 
         for(int i = 0; i<n; i++){
+            if (i + times[i] > n) continue;
             int d = dp[i+times[i]];
             int new_d;
             if(i > 0 && dp[i] == 0){
                 new_d = dp[i-1] + pays[i];
-            }
-            else{
+            }else{
                 new_d = dp[i] + pays[i];
             }
             if (d < new_d){
@@ -33,9 +34,7 @@ public class Main {
             }
         }
         System.out.print(dp[n]);
-        // for(int i = 0; i<=n; i++){
-        //     System.out.print(dp[i]+ " " );
-        // }
+        
 
     }
 }
