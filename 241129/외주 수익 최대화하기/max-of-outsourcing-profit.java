@@ -21,7 +21,13 @@ public class Main {
 
         for(int i = 0; i<n; i++){
             int d = dp[i+times[i]];
-            int new_d = dp[i] + pays[i];
+            int new_d;
+            if(i > 0 && dp[i] == 0){
+                new_d = dp[i-1] + pays[i];
+            }
+            else{
+                new_d = dp[i] + pays[i];
+            }
             if (d < new_d){
                 dp[i+times[i]] = new_d;
             }
