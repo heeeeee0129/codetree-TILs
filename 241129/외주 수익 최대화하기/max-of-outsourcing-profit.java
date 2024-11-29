@@ -32,13 +32,12 @@ public class Main {
                 dp[i+times[i]] = new_d;
             }
         }
-        int max_answer = -1;
-        for(int i = 0; i<=n; i++){
-            if(max_answer < dp[i]) max_answer = dp[i];
-            // System.out.print(dp[i]+" ");
-        }
-        System.out.print(max_answer);
-        
+        // int max_answer = -1;
+        // for(int i = 0; i<=n; i++){
+        //     if(max_answer < dp[i]) max_answer = dp[i];
+        //     System.out.print(dp[i]+" ");
+        // }
+        System.out.print(dp[n]);
 
     }
 }
