@@ -59,8 +59,6 @@ public class Main {
                 sum += arr[selected.get(i)][selected.get(j)];
             }
         }
-        // System.out.println(sum);
-
         return sum; 
     }
 
