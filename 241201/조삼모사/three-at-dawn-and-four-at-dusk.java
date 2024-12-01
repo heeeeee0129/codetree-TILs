@@ -19,34 +19,35 @@ public class Main {
             }
         }
 
-        comb(0);
+        comb(0, 0);
         System.out.println(answer);
     }
 
-    public static void comb(int idx){
+    public static void comb(int idx, int select_count){
         if(idx == n) {
-            //종료 조건
-            ArrayList<Integer> sel = new ArrayList<>();
-            ArrayList<Integer> un_sel = new ArrayList<>();
+            if(select_count == n/2){
+                //종료 조건
+                ArrayList<Integer> sel = new ArrayList<>();
+                ArrayList<Integer> un_sel = new ArrayList<>();
 
-            for(int i = 0; i<n; i++){
-                if(selected[i]){
-                    sel.add(i);
-                }else{
-                    un_sel.add(i);
+                for(int i = 0; i<n; i++){
+                    if(selected[i]){
+                        sel.add(i);
+                    }else{
+                        un_sel.add(i);
+                    }
+                }
+                int cha = Math.abs(calc_cha(sel) - calc_cha(un_sel));
+                if(cha < answer) {
+                    answer = cha;
                 }
             }
-            int cha = Math.abs(calc_cha(sel) - calc_cha(un_sel));
-            if(cha < answer) {
-                answer = cha;
-            }
-
             return;
         }
         selected[idx] = true;
-        comb(idx+1);
+        comb(idx+1, select_count+1);
         selected[idx] = false;
-        comb(idx+1);
+        comb(idx+1, select_count);
 
     }
 
