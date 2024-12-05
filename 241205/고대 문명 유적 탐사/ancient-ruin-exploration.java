@@ -41,7 +41,7 @@ public class Main {
 
         for(int test_case = 0; test_case < k; test_case++){
             int answer_sum = 0;
-            tamsa_max = count_piece();
+            tamsa_max = -1;
             tamsa_max_arr = new int[n][n];
             for(int i = 0; i<n; i++){
                 for(int j = 0; j<n; j++){
@@ -79,6 +79,7 @@ public class Main {
                 for(int i = 0; i<n; i++){
                     for(int j = 0; j<n; j++){
                         arr[i][j] = tamsa_max_arr[i][j];
+
                     }
                 }
                 answer_sum += tamsa_max;
@@ -90,6 +91,9 @@ public class Main {
                     c = count_check();
                 }
                 System.out.print(answer_sum + " " );
+                if(answer_sum == 0){
+                    return;
+                }
                 
             }
         }
