@@ -69,7 +69,10 @@ public class Main {
                             }
                         }
 
-                        
+                        // System.out.println("id dist x y score count 내부");
+                        // for(Rabbit r: rabbits){
+                        //     System.out.println(r);
+                        // }
                     }
 
                     rabbits.sort((r1, r2) -> {
@@ -136,56 +139,33 @@ public class Main {
                 break;
             }
 
-            
+            // System.out.println("id dist x y score count");
+            // for(Rabbit r: rabbits){
+            //     System.out.println(r);
+            // }
         }
         
     }
 
     public static Node moveRabbit(Rabbit r){
         Node[] nodes = new Node[4];
-        int d = 1;
-        int cur_x = r.x;
-        for(int cnt = 0; cnt < r.dist; cnt++){
-            cur_x += d;
-            if(cur_x > N || cur_x <= 0){
-                d *= -1;
-                cur_x += (d*2);
-            }
-        }
-        nodes[0] = new Node(cur_x, r.y);
+        
+        int minus_x = r.x - r.dist;
+        if(minus_x <= 0) minus_x = 2;
+        nodes[0] = new Node(minus_x, r.y);
 
-        cur_x = r.x;
-        d = -1;
-        for(int cnt = 0; cnt < r.dist; cnt++){
-            cur_x += d;
-            if(cur_x <= 0 || cur_x > N){
-                d *= -1;
-                cur_x += (d*2);
-            }
-        }
-        nodes[1] = new Node(cur_x, r.y);
+        int plus_x = r.x + r.dist;
+        if(plus_x > N) plus_x = N-1;
+        nodes[1] = new Node(plus_x, r.y);
 
-        int cur_y = r.y;
-        d = 1;
-        for(int cnt = 0; cnt < r.dist; cnt++){
-            cur_y += d;
-            if(cur_y <= 0 || cur_y > M){
-                d *= -1;
-                cur_y += (d*2);
-            }
-        }
-        nodes[2] = new Node(r.x, cur_y);
+        int minus_y = r.y - r.dist;
+        if(minus_y <= 0) minus_y = 2;
+        nodes[2] = new Node(r.x, minus_y);
 
-        cur_y = r.y;
-        d = -1;
-        for(int cnt = 0; cnt < r.dist; cnt++){
-            cur_y += d;
-            if(cur_y <= 0 || cur_y > M){
-                d *= -1;
-                cur_y += (d*2);
-            }
-        }
-        nodes[3] = new Node(r.x, cur_y);
+        int plus_y = r.y + r.dist;
+        if(plus_y > M) plus_y = M-1;
+        nodes[3] = new Node(r.x, plus_y);
+
         Arrays.sort(nodes);
         Node answer = nodes[0];
         return answer;
