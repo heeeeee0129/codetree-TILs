@@ -11,7 +11,9 @@ public class Main {
             st = new StringTokenizer(in.readLine());
             int a = Integer.parseInt(st.nextToken())-1;
             int b = Integer.parseInt(st.nextToken())-1;
+
             d_arr[a]++;
+            if(b > n) b--;
             d_arr[b+1]--;
         }
 
