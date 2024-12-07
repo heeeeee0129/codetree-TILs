@@ -6,12 +6,11 @@ public class Main {
         StringTokenizer st = new StringTokenizer(in.readLine());
         int n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
-        int[] d_arr = new int[n];
+        int[] d_arr = new int[n+1];
         for(int i = 0; i<k; i++){
             st = new StringTokenizer(in.readLine());
             int a = Integer.parseInt(st.nextToken())-1;
             int b = Integer.parseInt(st.nextToken())-1;
-            if(b >= n){ b = n-2; }
             d_arr[a]++;
             d_arr[b+1]--;
         }
